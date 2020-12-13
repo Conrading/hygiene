@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === 'production') {
 
 //below is old version for reading/posting JSON 
 
-app.get('/playing', (req, res) => {
+app.get('/', (req, res) => {
     fs.readFile('./storage/storagelist.JSON', 'utf8', (err, jsonString) => {
         if (err) {
             console.log("File read failed:", err)
