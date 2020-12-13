@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === 'production') {
 
 //below is old version for reading/posting JSON 
 
-app.get('/playing', (req, res) => {
+app.get('/', (req, res) => {
     fs.readFile('./storage/storagelist.JSON', 'utf8', (err, jsonString) => {
         if (err) {
             console.log("File read failed:", err)
@@ -90,7 +90,7 @@ app.post('/playingVideo', (req, res) => {
     .catch(err => {console.log('Fail because of ', err)})
 })
 // if user choose link
-app.post('/playingLink', (req, res) => {
+app.post('/', (req, res) => {
     console.log(req.body)
     const currentDB = JSON.parse(fs.readFileSync("./storage/storagelist.JSON")) // obtain the current DB
     console.log("Now we got: " + JSON.stringify(currentDB))
@@ -120,7 +120,7 @@ app.post('/playingLink', (req, res) => {
 })
 
 //setting parameter
-app.post("/updateParameter", (req, res) => {
+app.post("/", (req, res) => {
     const waitChangeArray = JSON.parse(req.body.waitChange) // obtain array waiting change
     const unchangeArray = JSON.parse(req.body.unChange) // obtain array unchange
     waitChangeArray.map((items) => {

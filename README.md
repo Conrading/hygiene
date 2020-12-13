@@ -18,6 +18,9 @@ $ npm install express-fileupload
 ```
 $ npm install pg
 ```
+```
+$ npm install path
+```
 #### Running Server
 ```
 $ npm run server
