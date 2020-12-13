@@ -10,9 +10,19 @@ app.use(fileUpload({
     createParentPath: true
 }));
 const fs = require('fs');
+const { env } = require('process');
 
 //listening port at 5011
 const port = process.env.PORT || 5011;
+
+//read React.js file from build folder
+app.use(express.static(path.join(__dirname, 'public')))
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('build'))
+    app.get('/*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'build', 'index.html'))
+    })
+}
 
 
 //below is old version for reading/posting JSON 
