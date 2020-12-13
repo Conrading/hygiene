@@ -16,6 +16,7 @@ const { env } = require('process');
 const port = process.env.PORT || 5011;
 
 //read React.js file from build folder
+var path = require('path')
 app.use(express.static(path.join(__dirname, 'public')))
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('build'))
